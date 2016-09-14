@@ -1,0 +1,359 @@
+@import 'constants';
+
+#react-container {
+  width: 95%;
+  max-width: 100rem;
+  margin: auto;
+}
+
+#character-sheet {
+  width: 100%;
+}
+
+#sheet-header {
+  display: flex;
+  width: 100%;
+
+  > #character-type {
+    flex: 1;
+    text-align: center;
+    margin-right: 1rem;
+  }
+
+  > #character-fluff {
+    flex: 3;
+    margin: 0 1rem;
+  }
+
+  > #character-portrait {
+    flex: 1;
+    text-align: center;
+    margin-left: 1rem;
+  }
+}
+
+#name-and-player {
+  display: flex;
+  width: 100%;
+
+  > #character-name {
+    flex: 2;
+    text-align: center;
+    font-size: $size-large;
+    font-variant: small-caps;
+    font-weight: bold;
+    margin-right: 1rem;
+  }
+
+  > #character-player {
+    flex: 1;
+    line-height: $size-large;
+    margin-left: 1rem;
+  }
+}
+
+.field-list-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: 0.1em;
+
+  > .field-list-label {
+    width: 5em;
+    padding-right: 0.5em;
+  }
+
+  > .field-list-value {
+    flex: 1;
+  }
+}
+
+#three-two-split-cols {
+  display: flex;
+  width: 100%;
+
+  > .left-column {
+    flex: 3;
+    margin-right: 1rem;
+  }
+
+  > .right-column {
+    flex: 2;
+    margin-left: 1rem;
+  }
+}
+
+.boxed-section {
+  width: 100%;
+  margin: 1rem 0;
+
+  > header {
+    background-color: #222;
+    color: #ddd;
+    text-align: center;
+    font-size: $size-big;
+    font-variant: small-caps;
+    font-weight: bold;
+    margin-bottom: 0.25em;
+
+    &.warn {
+      background-color: #622;
+    }
+  }
+
+  > .content {
+    width: 100%;
+  }
+}
+
+.dots {
+  font-size: 1.333em;
+  line-height: 0.75em;
+}
+
+.even-cols {
+  display: flex;
+  width: 100%;
+
+  > .column {
+    flex: 1;
+    margin: 0 1rem;
+  }
+
+  > .column:first-child {
+    margin-left: 0;
+  }
+
+  > .column:last-child {
+    margin-right: 0;
+  }
+}
+
+.attribute {
+  display: flex;
+  width: 100%;
+  font-size: $size-big;
+
+  > .attribute-label {
+    flex: 1;
+  }
+
+  > .attribute-dots {
+    width: 5em;
+    text-align: right;
+    padding-right: 0.5em;
+  }
+}
+
+.ability-group {
+  margin-bottom: 0.5rem;
+
+  > header {
+    font-size: $size-small;
+    display: flex;
+
+    > .group-name {
+      flex: 1
+    }
+
+    > .excellencies {
+      display: flex;
+      width: 4rem;
+
+      > div {
+        flex: 1;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.ability {
+  display: flex;
+  width: 100%;
+
+  > .ability-favored {
+    width: 1em;
+  }
+
+  > .ability-label {
+    flex: 1;
+  }
+
+  > .ability-dots {
+    width: 5em;
+    text-align: right;
+    padding-right: 0.5em;
+  }
+
+  > .ability-excellencies {
+    display: flex;
+    width: 4rem;
+
+    > div {
+      flex: 1;
+      text-align: center;
+      line-height: 0.925em;
+    }
+  }
+}
+
+.specialty {
+  display: flex;
+  width: 100%;
+
+  > .specialty-label {
+    flex: 1;
+  }
+
+  > .specialty-dots {
+    width: 3em;
+    text-align: right;
+    padding-right: 0.5em;
+  }
+}
+
+.background {
+  display: flex;
+  width: 100%;
+
+  > .background-type {
+    width: 7.5em;
+  }
+
+  > .background-kind {
+    width: 10em;
+  }
+
+  > .background-dots {
+    width: 5em;
+  }
+
+  > .background-fields {
+    flex: 1;
+    font-size: $size-small;
+
+    > .background-field {
+      display: flex;
+      width: 100%;
+
+      > .background-field-label {
+        width: 5em;
+      }
+
+      > .background-field-value {
+        flex: 1;
+      }
+    }
+  }
+}
+
+#essence-rating, #willpower-rating {
+  text-align: center;
+  font-size: $size-large;
+  letter-spacing: 0.1em;
+}
+
+#mote-pools {
+  margin-top: 1rem;
+
+  > div, > header {
+    display: flex;
+    width: 100%;
+    margin-bottom: 0.1rem;
+
+    > .mote-pool-label {
+      flex: 2;
+      font-weight: bold;
+    }
+
+    > .mote-pool-base, > .mote-pool-bonus, > .mote-pool-total {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  > header {
+    font-size: $size-small;
+
+    > .mote-pool-label {
+      background: none;
+    }
+  }
+}
+
+#attunements {
+  margin-top: 1rem;
+
+  > div, > header, > footer {
+    display: flex;
+    width: 100%;
+    margin-bottom: 0.1rem;
+
+    > .attunement-label {
+      flex: 3;
+    }
+
+    > .attunement-personal, > .attunement-peripheral {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  > header {
+    font-size: $size-small;
+  }
+
+  > footer {
+    > .attunement-personal, > .attunement-peripheral {
+      border-top: 1px solid #222;
+    }
+  }
+}
+
+.virtue {
+  text-align: center;
+  margin-bottom: 0.5rem;
+
+  > div {
+    width: 100%;
+  }
+
+  > .dots {
+    letter-spacing: 0.1em;
+  }
+}
+
+#charms {
+  width: 100%;
+
+  > header {
+    font-size: $size-small;
+  }
+
+  > header, > div {
+    display: flex;
+    width: 100%;
+    padding: 0.15rem 0;
+
+    > div { margin: 0 0.1rem; }
+
+    > .charm-name { flex: 4; margin-left: 0; }
+    > .charm-trait { flex: 1.5 }
+    > .charm-cost { flex: 1; }
+    > .charm-type { flex: 1; }
+    > .charm-duration { flex: 1; }
+    > .charm-obvious { flex: 0.5; }
+    > .charm-combo { flex: 0.5; }
+    > .charm-effects { flex: 8.5; }
+    > .charm-source { flex: 1; margin-right: 0; }
+  }
+
+  > div:nth-child(even) {
+    background-color: #ccc;
+  }
+}
+
+#source-json {
+  width: 100%;
+  height: 20em;
+}

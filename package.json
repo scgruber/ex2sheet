@@ -1,0 +1,31 @@
+{
+  "name": "ex2sheet",
+  "version": "1.0.0",
+  "description": "Dynamic Character Sheets for Exalted Second Edition",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scgruber/ex2sheet.git"
+  },
+  "author": "Sam Gruber <grubermensch@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scgruber/ex2sheet/issues"
+  },
+  "homepage": "https://github.com/scgruber/ex2sheet#readme",
+  "devDependencies": {
+    "babel-preset-react": "^6.11.1",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^6.0.0",
+    "grunt-browserify": "^5.0.0",
+    "grunt-concurrent": "^2.3.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-pug": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  },
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
+  }
+}
