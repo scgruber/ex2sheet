@@ -4,7 +4,25 @@ var Util = require('../util');
 var BoxedSection = require('../components/boxed_section');
 
 var Essence = React.createClass({
+  respirationFromBackground: function(bg) {
+    switch (bg.type) {
+      case "Hearthstone":
+        return bg.rating;
+      case "Cult":
+        if (bg.rating === 1) {
+          return 0;
+        } else if (bg.rating === 5) {
+          return 6;
+        } else {
+          return bg.rating;
+        }
+      default:
+        return 0;
+    }
+  },
+
   render: function() {
+    var self = this;
     var motePools = {
       personal: {
         base: (this.props.essence.rating * 3) + this.props.willpower.rating,
@@ -52,6 +70,26 @@ var Essence = React.createClass({
           <div className="attunement-label"></div>
           <div className="attunement-personal">{ (motePools.personal.base + motePools.personal.bonus) - this.props.backgrounds.filter((b) => b.type === "Artifact").map((b) => b.attune.personal).reduce((m,e) => m+e,0) }</div>
           <div className="attunement-peripheral">{ (motePools.peripheral.base + motePools.peripheral.bonus) - this.props.backgrounds.filter((b) => b.type === "Artifact").map((b) => b.attune.peripheral).reduce((m,e) => m+e,0) }</div>
+        </footer>
+      </div>
+      <div id="respiration">
+        <header>
+          <div className="respiration-label">Respiration</div>
+          <div className="respiration-motes-hr">Motes/hr</div>
+        </header>
+        <div>
+          <div className="respiration-label">Base</div>
+          <div className="respiration-motes-hr">4</div>
+        </div>
+        { this.props.backgrounds.filter((b) => self.respirationFromBackground(b) > 0).map(function(b) {
+          return (<div key={ b.type + "|" + b.kind }>
+            <div className="respiration-label">{ b.kind }</div>
+            <div className="respiration-motes-hr">{ self.respirationFromBackground(b) }</div>
+          </div>);
+        }) }
+        <footer>
+          <div className="respiration-label"></div>
+          <div className="respiration-motes-hr">{ 4 + this.props.backgrounds.filter((b) => self.respirationFromBackground(b) > 0).map((b) => self.respirationFromBackground(b)).reduce((m,e) => m+e,0) }</div>
         </footer>
       </div>
     </div>);

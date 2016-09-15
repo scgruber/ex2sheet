@@ -310,6 +310,35 @@
   }
 }
 
+#respiration {
+  margin-top: 1rem;
+
+  > div, > header, > footer {
+    display: flex;
+    width: 100%;
+    margin-bottom: 0.1rem;
+
+    > .respiration-label {
+      flex: 4;
+    }
+
+    > .respiration-motes-hr {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  > header {
+    font-size: $size-small;
+  }
+
+  > footer {
+    > .respiration-motes-hr {
+      border-top: 1px solid #222;
+    }
+  }
+}
+
 .virtue {
   text-align: center;
   margin-bottom: 0.5rem;
