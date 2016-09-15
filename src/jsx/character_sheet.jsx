@@ -11,6 +11,7 @@ var Virtues = require('./views/virtues');
 var Backgrounds = require('./views/backgrounds');
 var VirtueFlaw = require('./views/virtue_flaw');
 var Source = require('./views/source');
+var AnimaBanner = require('./views/anima_banner');
 
 var CharacterSheet = React.createClass({
   getInitialState: function() {
@@ -46,6 +47,7 @@ var CharacterSheet = React.createClass({
                         willpower   = { this.state.sheet.willpower }
                         virtues     = { this.state.sheet.virtues }
                         backgrounds = { this.state.sheet.backgrounds } />
+              <AnimaBanner sheet={ this.state.sheet } />
             </div>
             <div className="column">
               <Willpower willpower={ this.state.sheet.willpower } />

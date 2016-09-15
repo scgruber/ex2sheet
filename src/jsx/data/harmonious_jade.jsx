@@ -17,6 +17,7 @@ module.exports = {
     "personalBonus": 0,
     "peripheralBonus": 0
   },
+  "animaBanner": "A shooting star; when iconic, the star appears to fire with her arrows",
   "willpower": {
     "rating": 6,
     "channeled": 0
