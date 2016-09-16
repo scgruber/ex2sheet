@@ -67,7 +67,7 @@
   }
 }
 
-#three-two-split-cols {
+.three-two-split-cols {
   display: flex;
   width: 100%;
 
@@ -375,6 +375,44 @@
     > .charm-combo { flex: 0.5; }
     > .charm-effects { flex: 8.5; }
     > .charm-source { flex: 1; margin-right: 0; }
+  }
+
+  > div:nth-child(even) {
+    background-color: #ccc;
+  }
+}
+
+#physical-attacks {
+  width: 100%;
+
+  > header {
+    font-size: $size-small;
+  }
+
+  > header, > div {
+    display: flex;
+    width: 100%;
+    padding: 0.15rem 0;
+
+    > div { margin: 0 0.5rem; }
+
+    > .physical-attack-name { flex: 4; margin-left: 0; }
+    > .physical-attack-ability { flex: 2; }
+    > .physical-attack-speed { flex: 0.5; text-align: center; }
+    > .physical-attack-accuracy { flex: 1; text-align: center; }
+    > .physical-attack-damage { flex: 1; text-align: center; }
+    > .physical-attack-rate { flex: 0.5; text-align: center; }
+    > .physical-attack-range { flex: 0.5; text-align: center; }
+    > .physical-attack-defense { flex: 1; text-align: center; }
+    > .physical-attack-tags-notes { flex: 6; margin-right: 0; }
+
+    > .physical-attack-accuracy, > .physical-attack-damage, > .physical-attack-defense {
+      display: flex;
+
+      > div {
+        flex: 1;
+      }
+    }
   }
 
   > div:nth-child(even) {

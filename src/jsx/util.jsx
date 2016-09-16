@@ -13,6 +13,10 @@ var Util = {
 
   selectKeys: (object, keyList) => Util.filterKeys(object, (k) => keyList.includes(k)),
   rejectKeys: (object, keyList) => Util.filterKeys(object, (k) => !keyList.includes(k)),
+
+  formatSignedNumber: function(n) {
+    return (n>=0) ? ('+'+n) : n;
+  }
 };
 
 module.exports = Util;

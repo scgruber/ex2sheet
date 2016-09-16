@@ -273,5 +273,29 @@ module.exports = {
   "possessions": [
     "Exceptional Knife",
     "Broadhead Arrows"
+  ],
+  "physicalAttacks": [
+    {
+      "name": "Exceptional Knife",
+      "ability": "Melee",
+      "speed": 5,
+      "accuracyBonus": 2,
+      "damageBonus": 3,
+      "damageType": "L",
+      "rate": 4,
+      "defenseBonus": 1,
+      "tagsAndNotes": ["T"]
+    },
+    {
+      "name": "Eagle's Rain",
+      "ability": "Archery",
+      "speed": 6,
+      "accuracyBonus": 3,
+      "damageBonus": 5,
+      "damageType": "L",
+      "rate": 2,
+      "range": 300,
+      "tagsAndNotes": ["2","B"]
+    }
   ]
 }

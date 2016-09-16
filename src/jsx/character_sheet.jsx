@@ -13,6 +13,7 @@ var VirtueFlaw = require('./views/virtue_flaw');
 var Source = require('./views/source');
 var AnimaBanner = require('./views/anima_banner');
 var Possessions = require('./views/possessions');
+var PhysicalAttacks = require('./views/physical_attacks');
 
 var CharacterSheet = React.createClass({
   getInitialState: function() {
@@ -34,7 +35,7 @@ var CharacterSheet = React.createClass({
   render: function() {
     return (<div id="character-sheet">
       <Header sheet={ this.state.sheet }/>
-      <div id="three-two-split-cols">
+      <div className="three-two-split-cols">
         <div className="left-column">
           <Attributes sheet={ this.state.sheet } />
           <Abilities type={ this.state.sheet.type } caste={ this.state.sheet.caste } abilities={ this.state.sheet.abilities } />
@@ -57,6 +58,13 @@ var CharacterSheet = React.createClass({
             </div>
           </div>
           <Possessions sheet={ this.state.sheet } />
+        </div>
+      </div>
+      <div className="three-two-split-cols">
+        <div className="left-column">
+          <PhysicalAttacks sheet={ this.state.sheet } />
+        </div>
+        <div className="right-column">
         </div>
       </div>
       <Charms charms={ this.state.sheet.charms } />
