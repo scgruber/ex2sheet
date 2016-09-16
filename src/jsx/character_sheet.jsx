@@ -12,6 +12,7 @@ var Backgrounds = require('./views/backgrounds');
 var VirtueFlaw = require('./views/virtue_flaw');
 var Source = require('./views/source');
 var AnimaBanner = require('./views/anima_banner');
+var Possessions = require('./views/possessions');
 
 var CharacterSheet = React.createClass({
   getInitialState: function() {
@@ -55,6 +56,7 @@ var CharacterSheet = React.createClass({
               <VirtueFlaw sheet={ this.state.sheet } />
             </div>
           </div>
+          <Possessions sheet={ this.state.sheet } />
         </div>
       </div>
       <Charms charms={ this.state.sheet.charms } />

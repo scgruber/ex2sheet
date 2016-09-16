@@ -269,5 +269,9 @@ module.exports = {
       "type": "Resources",
       "rating": 2
     }
+  ],
+  "possessions": [
+    "Exceptional Knife",
+    "Broadhead Arrows"
   ]
 }
