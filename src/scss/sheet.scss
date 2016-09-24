@@ -420,6 +420,42 @@
   }
 }
 
+#social-attacks {
+  width: 100%;
+
+  > header {
+    font-size: $size-small;
+  }
+
+  > header, > div {
+    display: flex;
+    width: 100%;
+    padding: 0.15rem 0;
+
+    > div { margin: 0 0.5rem; }
+
+    > .social-attack-ability { flex: 3; }
+    > .social-attack-speed { flex: 0.5; text-align: center; }
+    > .social-attack-honest-attack { flex: 1; text-align: center; }
+    > .social-attack-deceitful-attack { flex: 1; text-align: center; }
+    > .social-attack-rate { flex: 0.5; text-align: center; }
+    > .social-attack-honest-defense { flex: 1; text-align: center; }
+    > .social-attack-deceitful-defense { flex: 1; text-align: center; }
+
+    > .social-attack-honest-attack, > .social-attack-deceitful-attack, > .social-attack-honest-defense, > .social-attack-deceitful-defense {
+      display: flex;
+
+      > div {
+        flex: 1;
+      }
+    }
+  }
+
+  > div:nth-child(even) {
+    background-color: #ccc;
+  }
+}
+
 #source-json {
   box-sizing: border-box;
   width: 100%;

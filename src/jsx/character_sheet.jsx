@@ -14,6 +14,7 @@ var Source = require('./views/source');
 var AnimaBanner = require('./views/anima_banner');
 var Possessions = require('./views/possessions');
 var PhysicalAttacks = require('./views/physical_attacks');
+var SocialAttacks = require('./views/social_attacks');
 
 var CharacterSheet = React.createClass({
   getInitialState: function() {
@@ -65,6 +66,7 @@ var CharacterSheet = React.createClass({
           <PhysicalAttacks sheet={ this.state.sheet } />
         </div>
         <div className="right-column">
+          <SocialAttacks sheet={ this.state.sheet } />
         </div>
       </div>
       <Charms charms={ this.state.sheet.charms } />
