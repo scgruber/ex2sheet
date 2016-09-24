@@ -297,5 +297,9 @@ module.exports = {
       "range": 300,
       "tagsAndNotes": ["2","B"]
     }
-  ]
+  ],
+  "languages": {
+    "Flametongue": ["Salmalin"],
+    "Riverspeak": ["Nexus"]
+  }
 }

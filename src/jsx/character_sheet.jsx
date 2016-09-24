@@ -15,6 +15,7 @@ var AnimaBanner = require('./views/anima_banner');
 var Possessions = require('./views/possessions');
 var PhysicalAttacks = require('./views/physical_attacks');
 var SocialAttacks = require('./views/social_attacks');
+var Languages = require('./views/languages');
 
 var CharacterSheet = React.createClass({
   getInitialState: function() {
@@ -67,6 +68,13 @@ var CharacterSheet = React.createClass({
         </div>
         <div className="right-column">
           <SocialAttacks sheet={ this.state.sheet } />
+          <div className="even-cols">
+            <div className="column">
+            </div>
+            <div className="column">
+              <Languages sheet={ this.state.sheet } />
+            </div>
+          </div>
         </div>
       </div>
       <Charms charms={ this.state.sheet.charms } />
