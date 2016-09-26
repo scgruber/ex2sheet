@@ -1,6 +1,7 @@
 var React = require('react');
 var Util = require('../util');
 var FieldList = require('../components/field_list');
+var LittleTable = require('../components/little_table');
 
 var Header = React.createClass({
   propTypes: {
@@ -13,7 +14,32 @@ var Header = React.createClass({
       motivation: React.PropTypes.string,
       personality: React.PropTypes.string,
       description: React.PropTypes.string,
+      experience: React.PropTypes.shape({
+        total: React.PropTypes.number.isRequired,
+        available: React.PropTypes.number.isRequired,
+      }).isRequired,
     }),
+  },
+
+  experienceColumns: [
+    {
+      name: "Total",
+      renderFn: (r) => r.total,
+    },
+    {
+      name: "Avail",
+      renderFn: (r) => r.available,
+    }
+  ],
+
+  getExperienceRows: function() {
+    return [
+      {
+        name: "Experience",
+        total: this.props.sheet.experience.total,
+        available: this.props.sheet.experience.available,
+      },
+    ];
   },
 
   render: function() {
@@ -21,8 +47,9 @@ var Header = React.createClass({
       <section id="sheet-header">
         <section id="character-type">
           <div id="exalted">EXALTED 2E</div>
-          <div id="character-type">{ this.props.sheet.type }</div>
-          <div id="caste">{ this.props.sheet.caste + " Caste" }</div>
+          <div id="character-kind">{ this.props.sheet.type } | { this.props.sheet.caste + " Caste" }</div>
+          <LittleTable  columns = { this.experienceColumns }
+                        rows    = { this.getExperienceRows() } />
         </section>
         <section id="character-fluff">
           <header id="name-and-player">
