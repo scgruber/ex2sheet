@@ -253,92 +253,6 @@
   letter-spacing: 0.1em;
 }
 
-#mote-pools {
-  margin-top: 1rem;
-
-  > div, > header {
-    display: flex;
-    width: 100%;
-    margin-bottom: 0.1rem;
-
-    > .mote-pool-label {
-      flex: 2;
-      font-weight: bold;
-    }
-
-    > .mote-pool-base, > .mote-pool-bonus, > .mote-pool-total {
-      flex: 1;
-      text-align: center;
-    }
-  }
-
-  > header {
-    font-size: $size-small;
-
-    > .mote-pool-label {
-      background: none;
-    }
-  }
-}
-
-#attunements {
-  margin-top: 1rem;
-
-  > div, > header, > footer {
-    display: flex;
-    width: 100%;
-    margin-bottom: 0.1rem;
-
-    > .attunement-label {
-      flex: 3;
-    }
-
-    > .attunement-personal, > .attunement-peripheral {
-      flex: 1;
-      text-align: center;
-    }
-  }
-
-  > header {
-    font-size: $size-small;
-  }
-
-  > footer {
-    > .attunement-personal, > .attunement-peripheral {
-      border-top: 1px solid #222;
-    }
-  }
-}
-
-#respiration {
-  margin-top: 1rem;
-
-  > div, > header, > footer {
-    display: flex;
-    width: 100%;
-    margin-bottom: 0.1rem;
-
-    > .respiration-label {
-      flex: 4;
-    }
-
-    > .respiration-motes-hr {
-      flex: 1;
-      text-align: center;
-    }
-  }
-
-  > header {
-    font-size: $size-small;
-  }
-
-  > footer {
-    > .respiration-motes-hr {
-      border-top: 1px solid #222;
-    }
-  }
-}
-
 .virtue {
   text-align: center;
   margin-bottom: 0.5rem;
@@ -453,6 +367,49 @@
 
   > div:nth-child(even) {
     background-color: #ccc;
+  }
+}
+
+.little-table {
+  margin-top: 1rem;
+
+  > header {
+    font-size: $size-small;
+  }
+
+  > div {
+    > .little-table-label.dark {
+      background-color: #222;
+      color: #ddd;
+      font-weight: bold;
+    }
+  }
+
+  > footer {
+    > .little-table-column {
+      border-top: 1px solid #222;
+    }
+  }
+
+  > header, > div, > footer {
+    display: flex;
+    margin-bottom: 0.1rem;
+
+    > div {
+      padding: 0.1rem 0.25rem;
+    }
+
+    > .little-table-label {
+      &.width-1 { flex: 1; }
+      &.width-2 { flex: 2; }
+      &.width-3 { flex: 3; }
+      &.width-4 { flex: 4; }
+    }
+
+    > .little-table-column {
+      text-align: center;
+      flex: 1;
+    }
   }
 }
 

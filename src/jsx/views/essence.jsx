@@ -2,8 +2,66 @@ var React = require('react');
 var Dots = require('../components/dots');
 var Util = require('../util');
 var BoxedSection = require('../components/boxed_section');
+var LittleTable = require('../components/little_table');
 
 var Essence = React.createClass({
+  motePoolColumns: [
+    {
+      name: "Base",
+      renderFn: (r) => r.base,
+    },
+    {
+      name: "Bonus",
+      renderFn: (r) => Util.formatSignedNumber(r.bonus),
+    },
+    {
+      name: "Total",
+      renderFn: (r) => r.base + r.bonus,
+    }
+  ],
+
+  getMotePoolRows: function() {
+    return [
+      {
+        name: "Personal",
+        base: (this.props.essence.rating * 3) + this.props.willpower.rating,
+        bonus: this.props.essence.personalBonus,
+      },
+      {
+        name: "Peripheral",
+        base: (this.props.essence.rating * 7) + this.props.willpower.rating + Object.keys(this.props.virtues).map((v) => this.props.virtues[v].rating).reduce((m,v) => m+v,0),
+        bonus: this.props.essence.peripheralBonus,
+      }
+    ];
+  },
+
+  getAttunementsColumns: function() {
+    return [
+      {
+        name: "Pers",
+        renderFn: (r) => r.personalCost,
+        reduceBase: (this.props.essence.rating * 3) + this.props.willpower.rating + this.props.essence.personalBonus,
+        reduceFn: (prev, cur) => prev - cur,
+      },
+      {
+        name: "Periph",
+        renderFn: (r) => r.peripheralCost,
+        reduceBase: (this.props.essence.rating * 7) + this.props.willpower.rating + Object.keys(this.props.virtues).map((v) => this.props.virtues[v].rating).reduce((m,v) => m+v,0) + this.props.essence.peripheralBonus,
+        reduceFn: (prev, cur) => prev - cur,
+      }
+    ];
+  },
+
+  getAttunementsRows: function() {
+    return this.props.backgrounds.filter((b) => b.type === "Artifact").map(function(b) {
+      return {
+        name: b.kind,
+        personalCost: b.attune.personal,
+        peripheralCost: b.attune.peripheral,
+      };
+    });
+  },
+
   respirationFromBackground: function(bg) {
     switch (bg.type) {
       case "Hearthstone":
@@ -19,6 +77,27 @@ var Essence = React.createClass({
       default:
         return 0;
     }
+  },
+
+  getRespirationColumns: function() {
+    return [
+      {
+        name: "Motes/hr",
+        renderFn: (r) => this.respirationFromBackground(r),
+        reduceBase: 0,
+        reduceFn: (prev, cur) => prev + cur,
+      }
+    ];
+  },
+
+  getRespirationRows: function() {
+    return (this.props.backgrounds.filter((b) => this.respirationFromBackground(b) > 0).map(function(b) {
+      return {
+        name: b.kind,
+        type: b.type,
+        rating: b.rating,
+      };
+    }));
   },
 
   render: function() {
@@ -37,61 +116,14 @@ var Essence = React.createClass({
       <div id="essence-rating">
         <Dots width={ 10 } rating={ this.props.essence.rating }/>
       </div>
-      <div id="mote-pools">
-        <header>
-          <div className="mote-pool-label"></div>
-          <div className="mote-pool-base">Base</div>
-          <div className="mote-pool-bonus">Bonus</div>
-          <div className="mote-pool-total">Total</div>
-        </header>
-        { ['personal', 'peripheral'].map(function(p) {
-          return (<div key={ p } id={ p + '-pool' }>
-          <div className="mote-pool-label">{ Util.capitalize(p) }</div>
-          <div className="mote-pool-base">{ motePools[p].base }</div>
-          <div className="mote-pool-bonus">{ motePools[p].bonus }</div>
-          <div className="mote-pool-total">{ motePools[p].base + motePools[p].bonus }</div>
-          </div>);
-        }) }
-      </div>
-      <div id="attunements">
-        <header>
-          <div className="attunement-label">Attunements</div>
-          <div className="attunement-personal">Personal</div>
-          <div className="attunement-peripheral">Peripheral</div>
-        </header>
-        { this.props.backgrounds.filter((b) => b.type === "Artifact").map(function(b) {
-          return (<div key={ b.kind }>
-            <div className="attunement-label">{ b.kind }</div>
-            <div className="attunement-personal">{ b.attune.personal }</div>
-            <div className="attunement-peripheral">{ b.attune.peripheral }</div>
-          </div>);
-        }) }
-        <footer>
-          <div className="attunement-label"></div>
-          <div className="attunement-personal">{ (motePools.personal.base + motePools.personal.bonus) - this.props.backgrounds.filter((b) => b.type === "Artifact").map((b) => b.attune.personal).reduce((m,e) => m+e,0) }</div>
-          <div className="attunement-peripheral">{ (motePools.peripheral.base + motePools.peripheral.bonus) - this.props.backgrounds.filter((b) => b.type === "Artifact").map((b) => b.attune.peripheral).reduce((m,e) => m+e,0) }</div>
-        </footer>
-      </div>
-      <div id="respiration">
-        <header>
-          <div className="respiration-label">Respiration</div>
-          <div className="respiration-motes-hr">Motes/hr</div>
-        </header>
-        <div>
-          <div className="respiration-label">Base</div>
-          <div className="respiration-motes-hr">4</div>
-        </div>
-        { this.props.backgrounds.filter((b) => self.respirationFromBackground(b) > 0).map(function(b) {
-          return (<div key={ b.type + "|" + b.kind }>
-            <div className="respiration-label">{ b.kind }</div>
-            <div className="respiration-motes-hr">{ self.respirationFromBackground(b) }</div>
-          </div>);
-        }) }
-        <footer>
-          <div className="respiration-label"></div>
-          <div className="respiration-motes-hr">{ 4 + this.props.backgrounds.filter((b) => self.respirationFromBackground(b) > 0).map((b) => self.respirationFromBackground(b)).reduce((m,e) => m+e,0) }</div>
-        </footer>
-      </div>
+      <LittleTable  columns = { this.motePoolColumns }
+                    rows    = { this.getMotePoolRows() } />
+      <LittleTable  title   = "Attunements"
+                    columns = { this.getAttunementsColumns() }
+                    rows    = { this.getAttunementsRows() } />
+      <LittleTable  title   = "Respiration"
+                    columns = { this.getRespirationColumns() }
+                    rows    = { this.getRespirationRows() } />
     </div>);
     return (<BoxedSection header  = "Essence"
                           content = { content } />);

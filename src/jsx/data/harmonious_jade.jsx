@@ -298,6 +298,10 @@ module.exports = {
       "tagsAndNotes": ["2","B"]
     }
   ],
+  "dodgeBonuses": {
+    "mentalBonus": 0,
+    "physicalBonus": 0
+  },
   "languages": {
     "Flametongue": ["Salmalin"],
     "Riverspeak": ["Nexus"]
