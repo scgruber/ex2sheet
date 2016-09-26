@@ -17,7 +17,7 @@ var Dots = React.createClass({
 
   renderChannel: function(channel, used) {
     if(channel > this.props.rating) {
-      return (<span key={ channel }>{ "\u2b1b" }</span>);
+      return (<span key={ channel } className="channel-unavailable">{ "\u2b1b" }</span>);
     } else if(used) {
       return (<span key={ channel }>{ "\u2b1b" }</span>);
     } else {

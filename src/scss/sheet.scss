@@ -1,5 +1,10 @@
 @import 'constants';
 
+body {
+  background-color: $color-white;
+  color: $color-black;
+}
+
 #react-container {
   width: 95%;
   max-width: 100rem;
@@ -87,8 +92,8 @@
   margin: 1rem 0;
 
   > header {
-    background-color: #222;
-    color: #ddd;
+    background-color: $color-light-black;
+    color: $color-dim-white;
     text-align: center;
     font-size: $size-big;
     font-variant: small-caps;
@@ -96,7 +101,7 @@
     margin-bottom: 0.25em;
 
     &.warn {
-      background-color: #622;
+      background-color: $color-warn-red;
     }
   }
 
@@ -108,6 +113,10 @@
 .dots {
   font-size: 1.333em;
   line-height: 0.75em;
+}
+
+.channel-unavailable {
+  color: $color-gray;
 }
 
 .even-cols {
@@ -292,7 +301,7 @@
   }
 
   > div:nth-child(even) {
-    background-color: #ccc;
+    background-color: $color-gray;
   }
 }
 
@@ -330,7 +339,7 @@
   }
 
   > div:nth-child(even) {
-    background-color: #ccc;
+    background-color: $color-gray;
   }
 }
 
@@ -366,7 +375,7 @@
   }
 
   > div:nth-child(even) {
-    background-color: #ccc;
+    background-color: $color-gray;
   }
 }
 
@@ -379,15 +388,15 @@
 
   > div {
     > .little-table-label.dark {
-      background-color: #222;
-      color: #ddd;
+      background-color: $color-light-black;
+      color: $color-dim-white;
       font-weight: bold;
     }
   }
 
   > footer {
     > .little-table-column {
-      border-top: 1px solid #222;
+      border-top: 1px solid $color-light-black;
     }
   }
 
